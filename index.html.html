@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Polu Birthday Surprise 💖</title>
+
+<style>
+body{
+margin:0;
+padding:0;
+background: radial-gradient(circle at top,#1a0033,#000);
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+font-family: 'Segoe UI', sans-serif;
+color:white;
+text-align:center;
+overflow:hidden;
+}
+
+/* Card */
+.card{
+background: rgba(255,255,255,0.07);
+padding:40px;
+border-radius:25px;
+backdrop-filter: blur(20px);
+box-shadow:0 0 50px rgba(255,0,150,0.6);
+width:90%;
+max-width:500px;
+z-index:2;
+}
+
+/* Heading Glow */
+h1{
+font-size:36px;
+background: linear-gradient(45deg,#ff4da6,#ff99cc);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+animation: glow 2s infinite alternate;
+}
+
+@keyframes glow{
+from{ text-shadow:0 0 10px #ff1e90;}
+to{ text-shadow:0 0 30px #ff66cc;}
+}
+
+p{
+margin-top:20px;
+font-size:18px;
+min-height:150px;
+}
+
+/* Button */
+button{
+margin-top:20px;
+padding:12px 25px;
+border:none;
+border-radius:30px;
+background:#ff4da6;
+color:white;
+font-size:16px;
+cursor:pointer;
+transition:0.3s;
+}
+
+button:hover{
+transform:scale(1.1);
+background:#ff1e90;
+}
+
+/* Confetti */
+.confetti{
+position:absolute;
+width:8px;
+height:8px;
+animation:fall linear infinite;
+}
+
+@keyframes fall{
+from{transform:translateY(-100vh);}
+to{transform:translateY(100vh);}
+}
+
+/* Stars */
+.star{
+position:absolute;
+width:2px;
+height:2px;
+background:white;
+animation: twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle{
+from{opacity:0.3;}
+to{opacity:1;}
+}
+
+/* Fireworks */
+.firework{
+position:absolute;
+width:5px;
+height:5px;
+background:white;
+border-radius:50%;
+animation: explode 1s ease-out forwards;
+}
+
+@keyframes explode{
+from{transform:scale(1); opacity:1;}
+to{transform:scale(15); opacity:0;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+<h1>Happy Birthday Polu 💖🎂</h1>
+<p id="text"></p>
+<button onclick="special()">Open Special Surprise 💝</button>
+</div>
+
+<!-- Music -->
+<audio autoplay loop>
+<source src="https://pagalfree.com/musics/128-Agar%20Tum%20Saath%20Ho%20128%20Kbps.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+/* Typing Effect */
+const message = `Wishing you many many happy returns of the day 💐🎊❤️
+
+Hamesha khush raho aur blessed raho 🫠✨
+
+Mere bure waqt mein hamesha mere saath rehne ke liye thank you 🫶✨🌸
+
+Jo sapne tumne dekhe hain,
+woh is saal poore hon 🌸🥀`;
+
+let i=0;
+function type(){
+if(i<message.length){
+document.getElementById("text").innerHTML+=message.charAt(i);
+i++;
+setTimeout(type,40);
+}
+}
+type();
+
+/* Confetti */
+for(let i=0;i<80;i++){
+let c=document.createElement("div");
+c.className="confetti";
+c.style.left=Math.random()*100+"vw";
+c.style.background="hsl("+Math.random()*360+",100%,50%)";
+c.style.animationDuration=(Math.random()*3+2)+"s";
+document.body.appendChild(c);
+}
+
+/* Stars */
+for(let i=0;i<100;i++){
+let s=document.createElement("div");
+s.className="star";
+s.style.left=Math.random()*100+"vw";
+s.style.top=Math.random()*100+"vh";
+document.body.appendChild(s);
+}
+
+/* Fireworks */
+setInterval(()=>{
+let f=document.createElement("div");
+f.className="firework";
+f.style.left=Math.random()*100+"vw";
+f.style.top=Math.random()*100+"vh";
+f.style.background="hsl("+Math.random()*360+",100%,50%)";
+document.body.appendChild(f);
+setTimeout(()=>{f.remove();},1000);
+},800);
+
+/* Button */
+function special(){
+alert("Polu 💖 You are truly special and always will be ✨");
+}
+
+</script>
+
+</body>
+</html>
